@@ -1,0 +1,54 @@
+*{
+    background-color: #121212;
+	margin: 0px;
+	font-family: 'Josefin Sans', sans-serif;
+	box-sizing: border-box;
+
+}
+h1 {
+	color: #84C9FB;
+    font-size: 28;
+    text-align: left;
+    margin-left: 60px;
+	}
+/* Size for brand */
+nav .navbar-brand
+{
+    font-size: xx-large;
+    background-color: #121212;
+}
+
+/* Colors for brand */
+nav .navbar-brand .blue
+{
+    color: #84C9FB;
+}
+
+nav .navbar-brand .green
+{
+    color: #45A29E;
+}
+.nav li a {
+	color: #FFFFFF
+	}
+.nav .nav-link{
+	color: #FFFFFF
+	}
+    button {
+        position: center;
+        padding: 5px 5px;
+        text-align: center;
+        color: white;
+    }
+input {
+    background-color: white;
+    position: left;
+    width: 75px;
+}
+
+.table {
+    width: 35%;
+    text-align: center;
+    color: #45A29E;
+    margin-left: 60px;
+}

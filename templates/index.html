@@ -1,0 +1,243 @@
+{% extends "layout.html" %}
+{% block title %}
+2D Truss Solver
+{% endblock %}
+{% block main %}
+
+<img src="{{url_for('static', filename='ExternalForce.png')}}" id = "container" style = "float:right"/>
+<img src="{{url_for('static', filename='DeformedShape.png')}}" id = "container" style = "float:right"/>
+<h1>Joints Table</h1>
+<table border="1" class="dataframe table table-striped table-dark">
+  <thead>
+    <tr style="text-align: center;">
+      <th>number</th>
+      <th>x</th>
+      <th>y</th>
+      <th>bound_x</th>
+      <th>bound_y</th>
+      <th>force_x</th>
+      <th>force_y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>120</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>-20</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>240</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>-10</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>360</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>60</td>
+      <td>90</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>-20</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>180</td>
+      <td>90</td>
+      <td>0</td>
+      <td>0</td>
+      <td>10</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>300</td>
+      <td>90</td>
+      <td>0</td>
+      <td>0</td>
+      <td>10</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1>Beam Table</h1>
+<table border="1" class="dataframe table table-striped table-dark">
+  <thead>
+    <tr style="text-align: center;">
+      <th>number</th>
+      <th>node i</th>
+      <th>node j</th>
+      <th>material</th>
+      <th>Area</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2</td>
+      <td>3</td>
+      <td>1</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+      <td>1</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+      <td>1</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>0</td>
+      <td>4</td>
+      <td>1</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>1</td>
+      <td>5</td>
+      <td>1</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>2</td>
+      <td>6</td>
+      <td>1</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>1</td>
+      <td>4</td>
+      <td>1</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>2</td>
+      <td>5</td>
+      <td>1</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>3</td>
+      <td>6</td>
+      <td>1</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1>Materials Table</h1>
+<table border="1" class="dataframe table table-striped table-dark">
+  <thead>
+    <tr style="text-align: center;">
+      <th>number</th>
+      <th>material</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>20000</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>4200</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1>Displacements</h1>
+<table border="1" class="dataframe table table-striped table-dark">
+  <thead>
+    <tr style="text-align: center;">
+      <th>X-Displacement</th>
+      <th>Y-displacement</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <td>0.466667</td>
+      <td>-1.629863</td>
+    </tr>
+    <tr>
+      <td>0.906667</td>
+      <td>-1.326728</td>
+    </tr>
+    <tr>
+      <td>1.080000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <td>1.026069</td>
+      <td>-1.126728</td>
+    </tr>
+    <tr>
+      <td>0.732736</td>
+      <td>-1.624962</td>
+    </tr>
+    <tr>
+      <td>0.506069</td>
+      <td>-0.721142</td>
+    </tr>
+  </tbody>
+</table>{% endblock %}
