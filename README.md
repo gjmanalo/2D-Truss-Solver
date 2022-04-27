@@ -35,7 +35,7 @@ The materials array can be added to as much as needed, simply list the next numb
 Material 0 has a modulus of 20000
 number     E (modulus of elasticity)
 # ([[0,     20000   ],
-# [1,     2000    ],
+# [1,      2000    ],
 # [2,     4200   ]])
 
 You may be wondering about what units all of these matrices use, and the answer is anything as long as you are consistent, for instance
